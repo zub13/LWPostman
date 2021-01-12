@@ -155,9 +155,6 @@ function addNewRowRequest(x) {
     const cell2 = row.insertCell(1);
     const cell3 = row.insertCell(2);
 
-    alert("inner: "  + document.getElementById("ptk0").outerHTML);
-
-
     cell1.innerHTML = "<input type=\"text\" id=\"" + templateKeyId + "\" name=\"" + templateKeyId + "\"  onchange='concat2url(this)'>";
     cell2.innerHTML = "<input type=\"text\" id=\"" + templateValueId + "\" name=\"" + templateValueId + "\" onchange='concat2url(this)'>";
     cell3.innerHTML = "<button type=\"button\" onclick='removeRowRequest(\"" + row.id + "\")'>&#10006;</button>";
