@@ -49,6 +49,12 @@ div {
     font-weight: bold;
 }
 
+.title{
+    padding:10px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
 /*
     Input fields
  */

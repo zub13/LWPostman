@@ -93,9 +93,7 @@ $requestTypes = array("GET", "POST", "PUT", "DELETE", "OPTIONS");
 
 
 <div class="container">
-    <br>
-    <h2>LW Postman</h2>
-    <br>
+    <div class="title">LW Postman</div>
     <div class="errorpanel" <?php if ($isError) {
         echo "style = \"display:block\"";
     } else {
@@ -103,7 +101,6 @@ $requestTypes = array("GET", "POST", "PUT", "DELETE", "OPTIONS");
     } ?>>
         <?php echo "Error: $errorMsg"; ?>
     </div>
-    <br>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
           onsubmit="return fillHiddenFields();">
         <div class="row">
@@ -157,13 +154,13 @@ $requestTypes = array("GET", "POST", "PUT", "DELETE", "OPTIONS");
                     <td><input type="text" id="ptk0" name="ptk0" value="<?php  echo isset($_POST['ptk0']) ? $_POST['ptk0'] : ''?>" onchange='concat2url(this)'></td>
                     <td><input type="text" id="ptv0" name="ptv0" value="<?php  echo isset($_POST['ptv0']) ? $_POST['ptv0'] : ''?>" onchange='concat2url(this)'></td>
                     <td>
-                        <button type="button" onclick='removeRowRequest("paramsTableRow0")'>&#10006;</button>
+                        <button type="button" onclick='removeRowRequest("paramsTableRow0")'>&#10006; REMOVE</button>
                     </td>
                 </tr>
                 </tbody>
             </table>
             <br>
-            <button type="button" onclick='addNewRowRequest("paramsTable")'>&#10009;</button>
+            <button type="button" onclick='addNewRowRequest("paramsTable")'>&#10009; ADD</button>
         </div>
 
         <div id="header" class="tabcontent">
@@ -179,22 +176,22 @@ $requestTypes = array("GET", "POST", "PUT", "DELETE", "OPTIONS");
                 <tbody>
                 <tr id="headersTableRow0">
                     <td><input type="text" id="htk0" name="htk0" value="<?php  echo isset($_POST['htk0']) ? $_POST['htk0'] : ''?>"></td>
-                    <td><input type="text" id="htk0" name="htv0" value="<?php  echo isset($_POST['htk0']) ? $_POST['htk0'] : ''?>"></td>
+                    <td><input type="text" id="htk0" name="htv0" value="<?php  echo isset($_POST['htv0']) ? $_POST['htv0'] : ''?>"></td>
                     <td>
-                        <button type="button" onclick='removeRowRequest("headersTableRow0")'>&#10006;</button>
+                        <button type="button" onclick='removeRowRequest("headersTableRow0")'>&#10006; REMOVE</button>
                     </td>
                 </tr>
                 </tbody>
             </table>
             <br>
-            <button type="button" onclick='addNewRowRequest("headersTable")'>&#10009;</button>
+            <button type="button" onclick='addNewRowRequest("headersTable")'>&#10009; ADD</button>
         </div>
 
         <div id="body" class="tabcontent">
             <h3>JSON Body</h3>
             <textarea id="jsonBody" class="jsonBody" name="jsonBody" rows="10" cols="69"><?php  echo isset($_POST['jsonBody']) ? $_POST['jsonBody'] : ''?></textarea>
             <br>
-            <button type="button" onclick="isValidJSON()">&#10003;</button>
+            <button type="button" onclick="isValidJSON()">&#10003; VALIDATE</button>
         </div>
         <br>
     </form>
