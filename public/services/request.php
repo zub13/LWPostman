@@ -128,6 +128,12 @@ class request
             // if response is not a json string
             $retArray['response'] = $response;
         }
+
+        if(strpos($status, "2") !== 0 && strpos($status, 3) !== 0){
+            $retArray['error'] = true;
+            $retArray['errorMsg'] = $status_line;
+            return $retArray;
+        }
         return $retArray;
     }
 
