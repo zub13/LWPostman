@@ -179,7 +179,7 @@ function removeRowRequest(x) {
 
 /*
     Parses the json content and returns false if an exception is thrown else returns true.
-    It also set the background color of the textarea according to the json validation result.
+    It also sets the background color of the textarea according to the json validation result.
  */
 function isValidJSON() {
     const data = document.getElementById("jsonBody").value;

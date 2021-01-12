@@ -1,7 +1,5 @@
 <?php
-
-require('private/HttpRequest.php');
-
+require('services/HttpRequest.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,38 +42,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $jsonContent = $_POST["jsonBody"];
     $content = json_decode($jsonContent, true);
+
     $httpRequest = new HttpRequest($url, $request, $headers, $content);
     $httpExecution = $httpRequest->doRequest();
     if (isset($httpExecution['error']) && $httpExecution['error'] === true) {
         $isError = true;
         $errorMsg = $httpExecution['errorMsg'];
         $errorCode = $httpExecution['errorCode'];
-/*        if($errorCode === 1){
-            echo "<script type='text/javascript'> document.getElementById(\"url\").setAttribute(\"style\", \"outline-color:#ea7ea3\");
-</script>";
-        } else {
-            echo "<script type='text/javascript'> resetErrorUrl();</script>";
-        }*/
     } else {
         $isError = false;
     }
 
     if (is_array($httpExecution['response'])) {
-        /*foreach ($httpExecution['response'] as $key => $value) {
-            $response .= $key . "=>" . $value . "<br>";
-        }*/
-
         $response = json_encode($httpExecution['response'], JSON_PRETTY_PRINT);
     } else {
         $response = $httpExecution['response'];
     }
 
     $responseHeader = json_encode($httpExecution['responseHeader'], JSON_PRETTY_PRINT);
-
-    /*foreach ($httpExecution['responseHeader'] as $key => $value) {
-        $responseHeader .= $key . "=>" . $value . "<br>";
-    }*/
-
     $responseCode = $httpExecution['responseCode'];
 }
 
@@ -88,7 +72,6 @@ function cleanInput($data)
 }
 
 $requestTypes = array("GET", "POST", "PUT", "DELETE", "OPTIONS");
-
 ?>
 
 

@@ -60,7 +60,7 @@ class HttpRequest
                 return $this->fetchResults($http_response_header, $response, true, "URL is not provided", "1");
             }
 
-            if (strcmp(strtoupper($this->getRequest()), 'GET') === 0) {
+            if (strtoupper($this->getRequest()) == "GET") {
                 try {
                     $response = file_get_contents($this->getUrl());
                 } catch
@@ -68,7 +68,7 @@ class HttpRequest
                     throw new RuntimeException("Error: \n" . $e->getMessage());
                 }
             } else {
-                if (count($this->getContent()) === 0) {
+                /*if (count($this->getContent()) === 0) {
                     return $this->fetchResults($http_response_header, $response, true, "Body content is not provided",
                         "2");
                 }
@@ -76,7 +76,7 @@ class HttpRequest
                 if (count($this->getHeaders()) === 0) {
                     return $this->fetchResults($http_response_header, $response, true, "Header is not provided",
                         "3");
-                }
+                }*/
                 $options = array(
                     'http' => array(
                         'header' => $this->getHeaders(),
