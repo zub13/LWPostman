@@ -34,8 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $headers[$i]["htv" . $strVal] = cleanInput($_POST["htv" . $strVal]);
         }
     }
-    var_dump($headers);
-
 
     $request = cleanInput($_POST["request"]);
     $url = cleanInput($_POST["url"]);
@@ -45,9 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $jsonContent = $_POST["jsonBody"];
-    var_dump($jsonContent);
     $content = json_decode($jsonContent, true);
-    var_dump($content);
     $httpRequest = new HttpRequest($url, $request, $headers, $content);
     $httpExecution = $httpRequest->doRequest();
     if (isset($httpExecution['error']) && $httpExecution['error'] === true) {
@@ -69,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $response .= $key . "=>" . $value . "<br>";
         }*/
 
-        var_dump($httpExecution['response']);
         $response = json_encode($httpExecution['response'], JSON_PRETTY_PRINT);
     } else {
         $response = $httpExecution['response'];
