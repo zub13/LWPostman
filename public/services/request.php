@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class HttpRequest
+ * Class request
  */
-class HttpRequest
+class request
 {
     /**
      * @var (String)
@@ -23,7 +23,7 @@ class HttpRequest
     public $content;
 
     /**
-     * HttpRequest constructor.
+     * request constructor.
      * @param $url
      * @param $request
      * @param $headers

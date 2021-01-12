@@ -1,5 +1,5 @@
 <?php
-include('services/HttpRequest.php');
+include('services/request.php');
 
 //phpinfo();
 ?>
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $jsonContent = $_POST["jsonBody"];
     $content = json_decode($jsonContent, true);
 
-    $httpRequest = new HttpRequest($url, $request, $headers, $content);
+    $httpRequest = new request($url, $request, $headers, $content);
     $httpExecution = $httpRequest->doRequest();
     if (isset($httpExecution['error']) && $httpExecution['error'] === true) {
         $isError = true;
