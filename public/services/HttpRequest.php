@@ -68,29 +68,24 @@ class HttpRequest
                     throw new RuntimeException("Error: \n" . $e->getMessage());
                 }
             } else {
-                /*if (count($this->getContent()) === 0) {
-                    return $this->fetchResults($http_response_header, $response, true, "Body content is not provided",
-                        "2");
+                $header = array();
+                $cnt = 0;
+                foreach ($this->getHeaders() as $key => $value) {
+                    $header[$cnt] = $value["htk" . $cnt] . ": " . $value["htv" . $cnt];
+                    $cnt++;
                 }
 
-                if (count($this->getHeaders()) === 0) {
-                    return $this->fetchResults($http_response_header, $response, true, "Header is not provided",
-                        "3");
-                }*/
                 $options = array(
                     'http' => array(
-                        'header' => $this->getHeaders(),
+                        'header' => $header,
                         'method' => strtoupper($this->getRequest()),
-                        'content' => json_encode($this->getContent())
+                        'content' => $this->getContent() === null ? "" : json_encode($this->getContent())
                     )
                 );
 
                 try {
                     $context = stream_context_create($options);
                     $response = file_get_contents($this->getUrl(), false, $context);
-                    if ($response === false) {
-                        throw new RuntimeException("unexpected response: \n" . $response);
-                    }
                 } catch
                 (Exception $e) {
                     throw new RuntimeException("Error: \n" . $e->getMessage());

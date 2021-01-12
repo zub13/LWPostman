@@ -1,5 +1,7 @@
 <?php
-require('services/HttpRequest.php');
+include('services/HttpRequest.php');
+
+//phpinfo();
 ?>
 <!DOCTYPE html>
 <html lang="en">
