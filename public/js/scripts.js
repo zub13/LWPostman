@@ -196,11 +196,3 @@ function isValidJSON() {
     }
     return true;
 }
-
-function focusErrorUrl(){
-    document.getElementById("url").setAttribute("style", "outline-color:#ea7ea3");
-}
-
-function resetErrorUrl(){
-    document.getElementById("url").removeAttribute("style");
-}

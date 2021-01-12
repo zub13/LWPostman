@@ -56,11 +56,11 @@ class request
     {
         $response = "";
         if (isset($this->request)) {
-            if (strlen($this->url) === 0) {
-                return $this->fetchResults($http_response_header, $response, true, "URL is not provided", "1");
+            if ($this->url === '') {
+                return $this->fetchResults($http_response_header, $response, true, "URL is not provided");
             }
 
-            if (strtoupper($this->getRequest()) == "GET") {
+            if (strtoupper($this->getRequest()) === "GET") {
                 try {
                     $response = file_get_contents($this->getUrl());
                 } catch
@@ -99,9 +99,11 @@ class request
     /**
      * @param $http_response_header
      * @param $response
+     * @param bool $error
+     * @param null $errorMsg
      * @return array
      */
-    public function fetchResults($http_response_header, $response, $error = false, $errorMsg = null, $errorCode = null)
+    public function fetchResults($http_response_header, $response, $error = false, $errorMsg = null)
     {
         $retArray = array();
 
